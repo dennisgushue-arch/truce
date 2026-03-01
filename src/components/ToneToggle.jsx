@@ -1,4 +1,4 @@
-export default function ToneToggle({ mode, tone, setTone, detail, setDetail, publicMode, setPublicMode }) {
+export default function ToneToggle({ mode, tone, setTone, publicMode, setPublicMode }) {
   if (mode === 'say') {
     return (
       <div className="tone-toggle">

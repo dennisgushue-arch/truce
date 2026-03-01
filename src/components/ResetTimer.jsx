@@ -16,11 +16,13 @@ export default function ResetTimer({ reset, color }) {
   const [done, setDone] = useState(false)
   const timerRef = useRef(null)
   const phaseRef = useRef(null)
+  const phaseIntervalRef = useRef(null)
 
   useEffect(() => {
     return () => {
       clearInterval(timerRef.current)
       clearTimeout(phaseRef.current)
+      clearInterval(phaseIntervalRef.current)
     }
   }, [])
 
@@ -45,15 +47,16 @@ export default function ResetTimer({ reset, color }) {
   }
 
   function runPhase(idx) {
+    clearInterval(phaseIntervalRef.current)
     const phase = PHASES[idx % PHASES.length]
     setPhaseIndex(idx % PHASES.length)
     let elapsed = 0
     const step = 50
-    const intervalId = setInterval(() => {
+    phaseIntervalRef.current = setInterval(() => {
       elapsed += step
       setPhaseProgress(elapsed / phase.duration)
       if (elapsed >= phase.duration) {
-        clearInterval(intervalId)
+        clearInterval(phaseIntervalRef.current)
         phaseRef.current = setTimeout(() => runPhase(idx + 1), 0)
       }
     }, step)

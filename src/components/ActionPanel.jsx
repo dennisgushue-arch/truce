@@ -27,7 +27,6 @@ const ACTION_META = {
 
 export default function ActionPanel({ pack, action, onClose }) {
   const [tone, setTone] = useState('neutral')
-  const [detail, setDetail] = useState(true)
   const [publicMode, setPublicMode] = useState(false)
   const overlayRef = useRef(null)
 
@@ -115,8 +114,6 @@ export default function ActionPanel({ pack, action, onClose }) {
               mode={action}
               tone={tone}
               setTone={setTone}
-              detail={detail}
-              setDetail={setDetail}
               publicMode={publicMode}
               setPublicMode={setPublicMode}
             />
