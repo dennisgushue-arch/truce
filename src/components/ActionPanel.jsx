@@ -8,6 +8,9 @@ function CopyBtn({ text }) {
     navigator.clipboard.writeText(text).then(() => {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
+    }).catch(() => {
+      setCopied(false)
+      alert('Copy failed — please select and copy the text manually.')
     })
   }
   return (
@@ -101,14 +104,14 @@ export default function ActionPanel({ pack, action, onClose }) {
   }
 
   return (
-    <div className="panel-overlay" ref={overlayRef} onClick={handleOverlayClick} role="dialog" aria-modal="true">
+    <div className="panel-overlay" ref={overlayRef} onClick={handleOverlayClick} role="dialog" aria-modal="true" aria-labelledby="panel-title-id">
       <div className="panel-sheet" style={{ '--accent': pack.color }}>
         <div className="panel-header" style={{ background: pack.color }}>
           <span className="panel-pack-name">{pack.emoji} {pack.name}</span>
           <button className="panel-close" onClick={onClose} aria-label="Close">✕</button>
         </div>
         <div className="panel-body">
-          <h2 className="panel-title">{meta.title}</h2>
+          <h2 id="panel-title-id" className="panel-title">{meta.title}</h2>
           {meta.hasTone && (
             <ToneToggle
               mode={action}
