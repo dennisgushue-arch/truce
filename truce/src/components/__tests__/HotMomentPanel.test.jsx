@@ -8,11 +8,10 @@ describe('HotMomentPanel', () => {
     const user = userEvent.setup()
     render(<HotMomentPanel packs={packs} onClose={vi.fn()} />)
 
-    await user.click(screen.getByRole('button', { name: /👶 parenting & kids chaos/i }))
+    const targetPack = packs[1]
+    await user.click(screen.getByRole('button', { name: new RegExp(targetPack.name, 'i') }))
 
-    expect(
-      screen.getByText(/let's pick one approach for today and debrief later\./i)
-    ).toBeInTheDocument()
+    expect(screen.getByText(new RegExp(targetPack.scripts.neutral, 'i'))).toBeInTheDocument()
   })
 
   it('supports copy interaction for the quick script', async () => {
