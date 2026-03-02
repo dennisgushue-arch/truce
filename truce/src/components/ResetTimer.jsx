@@ -11,7 +11,7 @@ const TOTAL_DURATION = 90
 export default function ResetTimer({ reset, color }) {
   const [secondsLeft, setSecondsLeft] = useState(TOTAL_DURATION)
   const [phaseIndex, setPhaseIndex] = useState(0)
-  const [phaseProgress, setPhaseProgress] = useState(0)
+  const [, setPhaseProgress] = useState(0)
   const [running, setRunning] = useState(false)
   const [done, setDone] = useState(false)
   const timerRef = useRef(null)
@@ -32,7 +32,7 @@ export default function ResetTimer({ reset, color }) {
     setPhaseProgress(0)
     runPhase(0)
     timerRef.current = setInterval(() => {
-      setSecondsLeft(prev => {
+      setSecondsLeft((prev) => {
         if (prev <= 1) {
           clearInterval(timerRef.current)
           setRunning(false)
@@ -70,7 +70,9 @@ export default function ResetTimer({ reset, color }) {
         <svg viewBox="0 0 120 120" className="breath-svg">
           <circle cx="60" cy="60" r="54" className="breath-track" />
           <circle
-            cx="60" cy="60" r="54"
+            cx="60"
+            cy="60"
+            r="54"
             className="breath-progress"
             style={{
               stroke: color,
@@ -93,11 +95,7 @@ export default function ResetTimer({ reset, color }) {
         </div>
       </div>
       {!running && (
-        <button
-          className="reset-btn"
-          style={{ background: color }}
-          onClick={startTimer}
-        >
+        <button className="reset-btn" style={{ background: color }} onClick={startTimer}>
           {done ? 'Restart 90s' : 'Start 90-sec Reset'}
         </button>
       )}

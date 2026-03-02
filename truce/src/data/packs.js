@@ -9,12 +9,14 @@ export const packs = [
     reset: 'Slow-down + unclench — long exhales; breathe through the tension.',
     scripts: {
       soft: "I'm tense about money and I don't want to come at you. Can we talk like teammates?",
-      neutral: "I'm feeling defensive. I want a plan, not a fight. Can we stick to numbers and next steps?",
+      neutral:
+        "I'm feeling defensive. I want a plan, not a fight. Can we stick to numbers and next steps?",
       firm: "I'm not continuing this conversation if we're blaming. I'm available when we can problem-solve.",
     },
     textShield: {
       rewrite: "I'm stressed about our budget. Can we look at the last 30 days together tonight?",
-      boundary: "I'm not okay with insults about money. If that continues, I'm pausing the conversation.",
+      boundary:
+        "I'm not okay with insults about money. If that continues, I'm pausing the conversation.",
       short: 'Can we talk budget tonight—team mode?',
     },
     nextMoves: ['Define the decision', 'Set a spending cap', 'Schedule a money meeting'],
@@ -49,7 +51,7 @@ export const packs = [
   },
   {
     id: 3,
-    name: "Tone, Respect & \"Don't Talk To Me Like That\"",
+    name: 'Tone, Respect & "Don\'t Talk To Me Like That"',
     emoji: '😤',
     color: '#9b5de5',
     promise: 'Protect respect even when you disagree.',
@@ -104,7 +106,7 @@ export const packs = [
     tapWhen: 'Visits, holidays, criticism from family, loyalty conflicts',
     reset: 'Steady + boundary-ready — slow breathing, short calm sentences.',
     scripts: {
-      soft: "I know family is sensitive. I need us to be united—can we decide together?",
+      soft: 'I know family is sensitive. I need us to be united—can we decide together?',
       neutral: "I'm not comfortable with that. Let's agree on a boundary we both support.",
       firm: "I won't be put in the middle. We decide as a couple.",
     },
@@ -115,7 +117,7 @@ export const packs = [
     },
     nextMoves: ['United front message', 'Exit plan for gatherings', 'One boundary sentence'],
     repair: [
-      "I made it you vs. me—my bad. I want us aligned first.",
+      'I made it you vs. me—my bad. I want us aligned first.',
       "I should've backed you up. Next time I will.",
     ],
   },
@@ -134,10 +136,14 @@ export const packs = [
     },
     textShield: {
       rewrite: "I'm feeling uneasy. Can we talk tonight so I don't spiral?",
-      boundary: "I need transparency about this. If not, we have a bigger issue.",
+      boundary: 'I need transparency about this. If not, we have a bigger issue.',
       short: 'I need reassurance tonight.',
     },
-    nextMoves: ['Ask one clarifying question', 'Request reassurance (specific)', 'Agree on a boundary'],
+    nextMoves: [
+      'Ask one clarifying question',
+      'Request reassurance (specific)',
+      'Agree on a boundary',
+    ],
     repair: [
       "I accused you. That wasn't fair. I'm scared, not trying to control you.",
       "I'm sorry—I want reassurance and a plan, not a fight.",
@@ -153,7 +159,7 @@ export const packs = [
     reset: 'Irritation downshift — breathe and state impact, then request change.',
     scripts: {
       soft: "I know it wasn't intentional. It still affects me—can we solve it?",
-      neutral: "When plans change last minute, I feel disrespected. I need earlier notice.",
+      neutral: 'When plans change last minute, I feel disrespected. I need earlier notice.',
       firm: "If this keeps happening, I'll make separate plans.",
     },
     textShield: {
@@ -163,7 +169,7 @@ export const packs = [
     },
     nextMoves: ['Define expectation', 'Set a confirmation time', 'Calendar rule'],
     repair: [
-      "I overreacted. I still need reliability—can we set a simple rule?",
+      'I overreacted. I still need reliability—can we set a simple rule?',
       "I'm sorry I snapped. The pattern is what hurts.",
     ],
   },
@@ -181,7 +187,7 @@ export const packs = [
       firm: "I need intimacy to feel connected. If we can't talk about it, we need help or a plan.",
     },
     textShield: {
-      rewrite: "Can we schedule a night for connection this week—no pressure, just us?",
+      rewrite: 'Can we schedule a night for connection this week—no pressure, just us?',
       boundary: "I'm not okay being ignored. I need a conversation and a plan.",
       short: 'Can we connect this week?',
     },
@@ -205,7 +211,7 @@ export const packs = [
     reset: 'Nervous system settle — breathe and set a time-bound pause.',
     scripts: {
       soft: "I'm overwhelmed. I'm not leaving—I'm pausing so I don't say something dumb.",
-      neutral: "I need 20 minutes. I will come back at [time].",
+      neutral: 'I need 20 minutes. I will come back at [time].',
       firm: "I'm not continuing while I'm flooded. I'll return at [time].",
     },
     textShield: {
@@ -229,7 +235,7 @@ export const packs = [
     reset: 'Downshift + humility — breathe and own your part first.',
     scripts: {
       soft: "I'm sorry. That wasn't okay. I want to repair this.",
-      neutral: "I crossed a line. I take responsibility. Can we reset and talk calmly?",
+      neutral: 'I crossed a line. I take responsibility. Can we reset and talk calmly?',
       firm: "I'm not proud of how I acted. I'm taking a break to cool off and I'll return to repair.",
     },
     textShield: {

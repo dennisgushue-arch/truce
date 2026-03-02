@@ -5,13 +5,16 @@ import ResetTimer from './ResetTimer'
 function CopyBtn({ text }) {
   const [copied, setCopied] = useState(false)
   function handleCopy() {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    }).catch(() => {
-      setCopied(false)
-      alert('Copy failed — please select and copy the text manually.')
-    })
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        setCopied(true)
+        setTimeout(() => setCopied(false), 2000)
+      })
+      .catch(() => {
+        setCopied(false)
+        alert('Copy failed — please select and copy the text manually.')
+      })
   }
   return (
     <button className="copy-btn" onClick={handleCopy}>
@@ -21,11 +24,11 @@ function CopyBtn({ text }) {
 }
 
 const ACTION_META = {
-  reset:   { title: '🫁 90-Second Reset',    hasTone: false },
-  say:     { title: '🗣️ Say It',              hasTone: true  },
-  rewrite: { title: '📱 Text Rewrite',        hasTone: true  },
-  next:    { title: '➡️ Next Moves',          hasTone: false },
-  repair:  { title: '🛠️ Repair Scripts',     hasTone: false },
+  reset: { title: '🫁 90-Second Reset', hasTone: false },
+  say: { title: '🗣️ Say It', hasTone: true },
+  rewrite: { title: '📱 Text Rewrite', hasTone: true },
+  next: { title: '➡️ Next Moves', hasTone: false },
+  repair: { title: '🛠️ Repair Scripts', hasTone: false },
 }
 
 export default function ActionPanel({ pack, action, onClose }) {
@@ -38,7 +41,9 @@ export default function ActionPanel({ pack, action, onClose }) {
   }, [action, pack])
 
   useEffect(() => {
-    function onKey(e) { if (e.key === 'Escape') onClose() }
+    function onKey(e) {
+      if (e.key === 'Escape') onClose()
+    }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
@@ -55,9 +60,7 @@ export default function ActionPanel({ pack, action, onClose }) {
     }
 
     if (action === 'say') {
-      const script = publicMode
-        ? pack.scripts.neutral
-        : pack.scripts[tone]
+      const script = publicMode ? pack.scripts.neutral : pack.scripts[tone]
       return (
         <div className="panel-content">
           <p className="script-text">"{script}"</p>
@@ -104,14 +107,27 @@ export default function ActionPanel({ pack, action, onClose }) {
   }
 
   return (
-    <div className="panel-overlay" ref={overlayRef} onClick={handleOverlayClick} role="dialog" aria-modal="true" aria-labelledby="panel-title-id">
+    <div
+      className="panel-overlay"
+      ref={overlayRef}
+      onClick={handleOverlayClick}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="panel-title-id"
+    >
       <div className="panel-sheet" style={{ '--accent': pack.color }}>
         <div className="panel-header" style={{ background: pack.color }}>
-          <span className="panel-pack-name">{pack.emoji} {pack.name}</span>
-          <button className="panel-close" onClick={onClose} aria-label="Close">✕</button>
+          <span className="panel-pack-name">
+            {pack.emoji} {pack.name}
+          </span>
+          <button className="panel-close" onClick={onClose} aria-label="Close">
+            ✕
+          </button>
         </div>
         <div className="panel-body">
-          <h2 id="panel-title-id" className="panel-title">{meta.title}</h2>
+          <h2 id="panel-title-id" className="panel-title">
+            {meta.title}
+          </h2>
           {meta.hasTone && (
             <ToneToggle
               mode={action}

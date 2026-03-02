@@ -1,10 +1,10 @@
 export default function PackTile({ pack, onAction }) {
   const buttons = [
-    { key: 'reset',   label: '🫁 Reset'     },
-    { key: 'say',     label: '🗣️ Say it'    },
-    { key: 'rewrite', label: '📱 Rewrite'   },
-    { key: 'next',    label: '➡️ Next Move' },
-    { key: 'repair',  label: '🛠️ Repair'   },
+    { key: 'reset', label: '🫁 Reset' },
+    { key: 'say', label: '🗣️ Say it' },
+    { key: 'rewrite', label: '📱 Rewrite' },
+    { key: 'next', label: '➡️ Next Move' },
+    { key: 'repair', label: '🛠️ Repair' },
   ]
 
   return (
@@ -19,12 +19,8 @@ export default function PackTile({ pack, onAction }) {
       <div className="tile-body">
         <p className="tile-promise">🤝 {pack.promise}</p>
         <div className="tile-actions">
-          {buttons.map(b => (
-            <button
-              key={b.key}
-              className="action-btn"
-              onClick={() => onAction(pack, b.key)}
-            >
+          {buttons.map((b) => (
+            <button key={b.key} className="action-btn" onClick={() => onAction(pack, b.key)}>
               {b.label}
             </button>
           ))}

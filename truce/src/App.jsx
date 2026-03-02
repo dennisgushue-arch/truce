@@ -26,7 +26,7 @@ export default function App() {
           <h1 className="app-title">TRUCE</h1>
           <button
             className="dark-toggle"
-            onClick={() => setDarkMode(d => !d)}
+            onClick={() => setDarkMode((d) => !d)}
             aria-label="Toggle dark mode"
           >
             {darkMode ? '☀️' : '🌙'}
@@ -40,11 +40,7 @@ export default function App() {
       </main>
 
       {activePack && activeAction && (
-        <ActionPanel
-          pack={activePack}
-          action={activeAction}
-          onClose={handleClose}
-        />
+        <ActionPanel pack={activePack} action={activeAction} onClose={handleClose} />
       )}
     </div>
   )

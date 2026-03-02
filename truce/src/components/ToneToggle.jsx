@@ -3,7 +3,7 @@ export default function ToneToggle({ mode, tone, setTone, publicMode, setPublicM
     return (
       <div className="tone-toggle">
         <div className="tone-row">
-          {['soft', 'neutral', 'firm'].map(t => (
+          {['soft', 'neutral', 'firm'].map((t) => (
             <button
               key={t}
               className={`tone-btn${tone === t ? ' active' : ''}`}
@@ -14,7 +14,11 @@ export default function ToneToggle({ mode, tone, setTone, publicMode, setPublicM
           ))}
         </div>
         <label className="public-toggle">
-          <input type="checkbox" checked={publicMode} onChange={e => setPublicMode(e.target.checked)} />
+          <input
+            type="checkbox"
+            checked={publicMode}
+            onChange={(e) => setPublicMode(e.target.checked)}
+          />
           <span className="public-label">Public Mode</span>
         </label>
       </div>
@@ -24,7 +28,7 @@ export default function ToneToggle({ mode, tone, setTone, publicMode, setPublicM
     return (
       <div className="tone-toggle">
         <div className="tone-row">
-          {['rewrite', 'boundary', 'short'].map(t => (
+          {['rewrite', 'boundary', 'short'].map((t) => (
             <button
               key={t}
               className={`tone-btn${tone === t ? ' active' : ''}`}
@@ -35,7 +39,11 @@ export default function ToneToggle({ mode, tone, setTone, publicMode, setPublicM
           ))}
         </div>
         <label className="public-toggle">
-          <input type="checkbox" checked={publicMode} onChange={e => setPublicMode(e.target.checked)} />
+          <input
+            type="checkbox"
+            checked={publicMode}
+            onChange={(e) => setPublicMode(e.target.checked)}
+          />
           <span className="public-label">Public Mode</span>
         </label>
       </div>
