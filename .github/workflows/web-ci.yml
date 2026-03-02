@@ -1,6 +1,6 @@
 name: Web CI
 
-on:
+'on':
   push:
     paths:
       - 'truce/**'
