@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import ToneToggle from './ToneToggle'
 import ResetTimer from './ResetTimer'
+import { relationshipModes } from '../data/packs'
 
 function CopyBtn({ text }) {
   const [copied, setCopied] = useState(false)
@@ -31,13 +32,14 @@ const ACTION_META = {
   repair: { title: '🛠️ Repair Scripts', hasTone: false },
 }
 
-export default function ActionPanel({ pack, action, onClose }) {
-  const [tone, setTone] = useState('neutral')
-  const [publicMode, setPublicMode] = useState(false)
+export default function ActionPanel({ pack, action, riskFlags, onClose }) {
+  const [tone, setTone] = useState('direct')
+  const [relationshipMode, setRelationshipMode] = useState('problemSolve')
   const overlayRef = useRef(null)
 
   useEffect(() => {
-    setTone(action === 'rewrite' ? 'rewrite' : 'neutral')
+    setTone(action === 'rewrite' ? 'calm' : 'direct')
+    setRelationshipMode('problemSolve')
   }, [action, pack])
 
   useEffect(() => {
@@ -60,7 +62,8 @@ export default function ActionPanel({ pack, action, onClose }) {
     }
 
     if (action === 'say') {
-      const script = publicMode ? pack.scripts.neutral : pack.scripts[tone]
+      const goalScript = pack.goalScripts?.[relationshipMode]?.[tone]
+      const script = goalScript ?? pack.scripts[tone] ?? pack.scripts.direct
       return (
         <div className="panel-content">
           <p className="script-text">"{script}"</p>
@@ -70,12 +73,17 @@ export default function ActionPanel({ pack, action, onClose }) {
     }
 
     if (action === 'rewrite') {
-      const key = publicMode ? 'short' : tone
-      const text = pack.textShield[key]
+      const text = pack.textShield[tone] ?? pack.textShield.calm
       return (
         <div className="panel-content">
           <p className="script-text">"{text}"</p>
           <CopyBtn text={text} />
+          {riskFlags && (
+            <div className="risk-flag-box">
+              <p className="risk-flag-title">⚠️ Hot words to avoid</p>
+              <p className="risk-flag-list">{riskFlags.hotWords.slice(0, 6).join(', ')}</p>
+            </div>
+          )}
         </div>
       )
     }
@@ -128,14 +136,22 @@ export default function ActionPanel({ pack, action, onClose }) {
           <h2 id="panel-title-id" className="panel-title">
             {meta.title}
           </h2>
-          {meta.hasTone && (
-            <ToneToggle
-              mode={action}
-              tone={tone}
-              setTone={setTone}
-              publicMode={publicMode}
-              setPublicMode={setPublicMode}
-            />
+          {meta.hasTone && <ToneToggle mode={action} tone={tone} setTone={setTone} />}
+          {action === 'say' && (
+            <div className="goal-toggle">
+              <p className="goal-toggle-title">Relationship Mode</p>
+              <div className="goal-toggle-row">
+                {relationshipModes.map((mode) => (
+                  <button
+                    key={mode.id}
+                    className={`goal-btn${relationshipMode === mode.id ? ' active' : ''}`}
+                    onClick={() => setRelationshipMode(mode.id)}
+                  >
+                    {mode.label}
+                  </button>
+                ))}
+              </div>
+            </div>
           )}
           {renderContent()}
         </div>

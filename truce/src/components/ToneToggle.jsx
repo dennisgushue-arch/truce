@@ -1,26 +1,30 @@
-export default function ToneToggle({ mode, tone, setTone, publicMode, setPublicMode }) {
+const SAY_LABELS = {
+  soft: 'Softer',
+  direct: 'Direct',
+  firm: 'Firm',
+}
+
+const REWRITE_LABELS = {
+  calm: 'Calm',
+  boundary: 'Boundary',
+  short: 'Short',
+}
+
+export default function ToneToggle({ mode, tone, setTone }) {
   if (mode === 'say') {
     return (
       <div className="tone-toggle">
         <div className="tone-row">
-          {['soft', 'neutral', 'firm'].map((t) => (
+          {['soft', 'direct', 'firm'].map((t) => (
             <button
               key={t}
               className={`tone-btn${tone === t ? ' active' : ''}`}
               onClick={() => setTone(t)}
             >
-              {t.charAt(0).toUpperCase() + t.slice(1)}
+              {SAY_LABELS[t]}
             </button>
           ))}
         </div>
-        <label className="public-toggle">
-          <input
-            type="checkbox"
-            checked={publicMode}
-            onChange={(e) => setPublicMode(e.target.checked)}
-          />
-          <span className="public-label">Public Mode</span>
-        </label>
       </div>
     )
   }
@@ -28,24 +32,16 @@ export default function ToneToggle({ mode, tone, setTone, publicMode, setPublicM
     return (
       <div className="tone-toggle">
         <div className="tone-row">
-          {['rewrite', 'boundary', 'short'].map((t) => (
+          {['calm', 'boundary', 'short'].map((t) => (
             <button
               key={t}
               className={`tone-btn${tone === t ? ' active' : ''}`}
               onClick={() => setTone(t)}
             >
-              {t.charAt(0).toUpperCase() + t.slice(1)}
+              {REWRITE_LABELS[t]}
             </button>
           ))}
         </div>
-        <label className="public-toggle">
-          <input
-            type="checkbox"
-            checked={publicMode}
-            onChange={(e) => setPublicMode(e.target.checked)}
-          />
-          <span className="public-label">Public Mode</span>
-        </label>
       </div>
     )
   }

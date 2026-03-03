@@ -111,6 +111,32 @@ body {
   margin-top: 4px;
 }
 
+.context-chip-row {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.context-chip {
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 7px 12px;
+  white-space: nowrap;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.context-chip.active {
+  background: var(--accent, #2a9d8f);
+  border-color: var(--accent, #2a9d8f);
+  color: #fff;
+}
+
 .hot-moment-cta {
   width: 100%;
   margin-top: 10px;
@@ -416,6 +442,40 @@ body {
   gap: 10px;
 }
 
+.goal-toggle {
+  margin-bottom: 14px;
+}
+
+.goal-toggle-title {
+  font-size: 0.8rem;
+  color: var(--text2);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.goal-toggle-row {
+  display: flex;
+  gap: 8px;
+}
+
+.goal-btn {
+  flex: 1;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  padding: 8px 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.goal-btn.active {
+  background: var(--accent, #2a9d8f);
+  border-color: var(--accent, #2a9d8f);
+  color: #fff;
+}
+
 .tone-row {
   display: flex;
   gap: 8px;
@@ -497,6 +557,27 @@ body {
 
 .copy-btn:hover {
   opacity: 0.85;
+}
+
+.risk-flag-box {
+  margin-top: 6px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  background: var(--surface);
+}
+
+.risk-flag-title {
+  font-size: 0.75rem;
+  color: var(--text2);
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.risk-flag-list {
+  font-size: 0.78rem;
+  color: var(--text2);
+  line-height: 1.5;
 }
 
 /* ── Next moves ── */

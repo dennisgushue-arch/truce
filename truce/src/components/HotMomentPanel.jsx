@@ -83,8 +83,8 @@ export default function HotMomentPanel({ packs, onClose }) {
 
           <div className="hot-moment-step hot-script">
             <p className="hot-moment-step-title">3) Use this neutral script now</p>
-            <p className="script-text">"{selectedPack.scripts.neutral}"</p>
-            <CopyBtn text={selectedPack.scripts.neutral} />
+            <p className="script-text">"{selectedPack.scripts.direct}"</p>
+            <CopyBtn text={selectedPack.scripts.direct} />
           </div>
         </div>
       </div>
